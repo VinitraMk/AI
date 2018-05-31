@@ -1,0 +1,9 @@
+6 6
+CityA CityB 2
+CityA CityC 3
+CityB CityD 4
+CityB CityE 5
+CityD CityC 6
+CityE CityF 1
+CityA
+CityD
