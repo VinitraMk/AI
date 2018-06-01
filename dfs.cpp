@@ -28,19 +28,23 @@ bool vis[N+1]={false};
 pair<ll,ll> path[N+1];
 ll pi=0;
 ll cost=0;
-
+set<pair<ll,vector<ll>>> mulp;
 void dfs(ll s,ll d,ll c) {
     vis[s]=true;
     path[pi]=make_pair(s,c);
     pi++;
     if(s==d) {
         cout<<"DFS path is: ";
+        vector<ll> te;
         for(ll i=0;i<pi;i++) {
             cost+=path[i].second;
-            cout<<nodes1[path[i].first]<<" ";
+            //cout<<nodes1[path[i].first]<<" ";
+            te.push_back(path[i].first);
         }
-        cout<<endl<<"The cost of the path is: "<<cost<<endl;
-        return;
+        mulp.insert(make_pair(cost,te));
+        cost=0;
+        //cout<<endl<<"The cost of the path is: "<<cost<<endl;
+        //return;
     }
     else {
         for(auto it=adj[s].begin();it!=adj[s].end();it++) {
@@ -75,7 +79,7 @@ int main() {
             k++;
         }
         adj[nodes[l]].push_back(make_pair(nodes[r],e));
-        adj[nodes[r]].push_back(make_pair(nodes[l],e));
+        //adj[nodes[r]].push_back(make_pair(nodes[l],e));
     }
     set<pair<ll,ll>> se;
     cout<<endl<<endl;
@@ -84,6 +88,13 @@ int main() {
     cin>>l>>r;
     c=0;
     dfs(nodes[l],nodes[r],c);
+    auto it=mulp.begin();
+    pair<ll,vector<ll>> p = *it;
+    vector<ll> fp = p.second;
+    cout<<"The dfs path is: ";
+    for(auto vit=fp.begin();vit!=fp.end();vit++) 
+        cout<<nodes1[*vit]<<" ";
+    cout<<endl<<"Cost is: "<<p.first<<endl;
     return 0;
 }
 

@@ -27,6 +27,7 @@ map<ll,string> nodes1;
 ll cost=0;
 string path1="";
 vector<ll> path;
+set<pair<ll,vector<ll>>> mulp;
 void bfs(ll s,ll d) {
     queue<vector<pair<ll,ll>>> q;
     vector<pair<ll,ll>> path;
@@ -81,7 +82,7 @@ int main() {
             k++;
         }
         adj[nodes[l]].push_back(make_pair(nodes[r],e));
-        adj[nodes[r]].push_back(make_pair(nodes[l],e));
+        //adj[nodes[r]].push_back(make_pair(nodes[l],e));
     }
     set<pair<ll,ll>> se;
     cout<<endl<<endl;

@@ -1,0 +1,10 @@
+8 8
+A B 3
+A C 2
+A D 3
+B F 3
+C I 2
+D J 3
+F H 2
+I H 2
+A H
